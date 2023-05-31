@@ -18,7 +18,7 @@ export class ConverterComponent implements OnInit {
 
   ngOnInit(): void {
     this.currenciesService.getAllCurrencies().subscribe(c => this.currencies = c);
-    // this.currenciesService.handleOptionSelected().subscribe(e => this.currenciesRates = e);
+    this.currenciesService.handleOptionSelected().subscribe(e => this.currenciesRates = e);
   }
   getObjectEntries(obj: any): any[] {
     return Object.entries(obj).map(([key, value]) => ({ key, value }));
