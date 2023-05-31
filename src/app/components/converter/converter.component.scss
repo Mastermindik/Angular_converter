@@ -1,0 +1,62 @@
+@use "../../../styles.scss" as main;
+
+.wraper {
+    margin: 1rem auto;
+    width: 80%;
+    max-width: 55rem;
+    height: 20rem;
+
+    display: flex;
+    justify-content: space-around;
+
+    background: rgba(255, 255, 255, 0.225);
+    border-radius: 1rem;
+    box-shadow: main.$primary-shadow;
+    .side-currency {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        p {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        select{
+            width: 100%;
+            height: 2rem;
+
+            border-radius: .5rem;
+            box-shadow: main.$primary-shadow;
+            &:focus {
+                outline: none;
+            }
+        }
+        input {
+            width: 100%;
+            height: 2rem;
+            border-radius: .5rem;
+            border: 1px solid rgb(118, 118, 118);
+            box-shadow: main.$primary-shadow;
+            &:focus {
+                outline: none;
+            }
+            &::-webkit-inner-spin-button {
+                display: none;
+            }
+        }
+    }
+    .swap .arrows {
+        margin-top: 5rem;
+        padding: 1rem;
+        
+        display: flex;
+
+        border-radius: .5rem;
+        cursor: pointer;
+        transition: all .5s;
+        &:hover {
+            background: rgba(255, 255, 255, 0.75);
+        }
+    }
+}
