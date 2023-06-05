@@ -44,3 +44,4 @@ export class ConverterComponent implements OnInit {
     this.convertRightCurrency();
   }
 }
+//https://www.oanda.com/currency-converter/ru/?from=USD&to=UAH&amount=1 !!!!!!
