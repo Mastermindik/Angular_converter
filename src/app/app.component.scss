@@ -30,23 +30,31 @@
       left: 0;
       right: 0;
       height: 60px;
+      background-color: #00214a;
       display: flex;
       align-items: center;
-      background-color: #1976d2;
-      color: white;
-      font-weight: 600;
-  }
 
-  .name {
-    font-size: 1rem;
-  }
+      .container {
+          width: 80%;
+          max-width: 75rem;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          color: white;
+          font-weight: 600;
 
-  .current-courses {
-      display: flex;
-      gap: 1rem;
-      padding-right: 2rem;
+          .name {
+              font-size: 1rem;
+          }
 
-      p {
-          font-size: 1rem;
+          .current-courses {
+              display: flex;
+              gap: 1rem;
+
+              p {
+                  font-size: 1rem;
+              }
+          }
+
       }
   }

@@ -1,0 +1,32 @@
+<div class="statistic-wraper">
+    <div class="chart">
+        <canvas baseChart id="myChart" class="chart" [data]="lineChartData" [type]="lineChartType"
+            [options]="lineChartOptions"></canvas>
+    </div>
+    <div class="table">
+        <table class="extremum-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>{{currentCurrencies[0]}}/{{currentCurrencies[1]}}</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>Min</td>
+                <td>{{min | number: "2.2-2"}}</td>
+            </tr>
+            <tr>
+                <td>Avg</td>
+                <td>{{avg | number: "2.2-2"}}</td>
+            </tr>
+            <tr>
+                <td>Max</td>
+                <td>{{max | number: "2.2-2"}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="anotation">
+        <p>{{currentCurrencies[0]}}/{{currentCurrencies[1]}} for a 7-day period with an end date {{dateNow}}.</p>
+        <p>These values represent the daily average of ANGULAR's bid and ask rates from multiple data sources.</p>
+    </div>
+</div>

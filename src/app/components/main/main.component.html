@@ -1,0 +1,7 @@
+<div class="container">
+    <app-subtitle class="subtitle"></app-subtitle>
+    <div class="c-and-s">
+        <app-converter class="convetter" (optionChanged)="selectedCurrencyCahnge($event)"></app-converter>
+        <app-statistic class="statistic" [currentCurrencies]="currencies"></app-statistic>
+    </div>
+</div>

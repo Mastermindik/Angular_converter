@@ -1,0 +1,37 @@
+@use "../../../styles.scss" as main;
+
+.statistic-wraper {
+    height: 100%;
+    padding: .5rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    background: rgba(255, 255, 255, 0.225);
+    border-radius: 1rem;
+    box-shadow: main.$primary-shadow;
+    .chart {
+        canvas{
+            max-width: 344px;
+        }
+    }
+    .table {
+        .extremum-table {
+            width: 100%;
+            padding: 0 .5rem;
+
+            text-align: center;
+
+            color: #333333;
+            td,th {
+                padding: 5px;
+                border-bottom: 1px solid #333333;
+            }
+        }
+    }
+    .anotation {
+        margin-top: auto;
+        font-size: .7rem;
+    }
+}

@@ -1,0 +1,21 @@
+.container {
+    width: 80%;
+    max-width: 75rem;
+    margin: 0 auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    .subtitle {
+        flex: 100%;
+    }
+    .c-and-s {
+        display: flex;
+        gap: 1rem;
+        .convetter {
+            flex: auto;
+        }
+        .statistic {
+            flex: 30%;
+        }
+    }
+}

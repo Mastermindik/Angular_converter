@@ -1,25 +1,49 @@
-<div class="wraper">
-    <div class="side-currency">
-        <p>We give:</p>
-        <select name="" id="left-currency-select" (change)="onOptionSelect()" [(ngModel)]="leftCurrency">
-            <ng-container *ngFor="let currency of getObjectEntries(currencies)">
-                <option  [value]="currency.key">{{currency.value}}, {{currency.key}}</option>
-            </ng-container>
-        </select>
-        <input type="number" placeholder="0" min="0" [(ngModel)]="leftCurrencyValue" (ngModelChange)="convertRightCurrency()">
-    </div>
-    <div class="swap">
-        <div class="arrows" (click)="swapCurrencies()">
-            <svg height="32" viewBox="0 0 512 512" width="32" xmlns="http://www.w3.org/2000/svg"><polyline points="304 48 416 160 304 272" style="fill:none;stroke:#000;stroke-linecap:square;stroke-miterlimit:10;stroke-width:32px"/><line style="fill:none;stroke:#000;stroke-linecap:square;stroke-miterlimit:10;stroke-width:32px" x1="398.87" x2="96" y1="160" y2="160"/><polyline points="208 464 96 352 208 240" style="fill:none;stroke:#000;stroke-linecap:square;stroke-miterlimit:10;stroke-width:32px"/><line style="fill:none;stroke:#000;stroke-linecap:square;stroke-miterlimit:10;stroke-width:32px" x1="114" x2="416" y1="352" y2="352"/></svg>
+<div class="converter-wraper">
+    <div class="converter-actual">
+        <div class="side-currency">
+            <p>We give:</p>
+            <mat-form-field class="currency-form">
+                <mat-select (selectionChange)="convertRightCurrency()" [(ngModel)]="leftCurrency" id="left-currency-select">
+                  <mat-option *ngFor="let currency of currencies" [value]="currency.key">{{currency.value}}, {{currency.key}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="currency-form">
+                <input matInput type="number" placeholder="0" min="0" [(ngModel)]="leftCurrencyValue" (ngModelChange)="convertRightCurrency()">
+            </mat-form-field>
+            <mat-form-field class="currency-form">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker" [max]="maxDate" [(ngModel)]="currentDate" (ngModelChange)="changeDate()">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="swap">
+            <div class="arrows" (click)="swapCurrencies()">
+                <svg height="32" viewBox="0 0 512 512" width="32" xmlns="http://www.w3.org/2000/svg"><polyline points="304 48 416 160 304 272" style="fill:none;stroke:#333333;stroke-linecap:square;stroke-miterlimit:10;stroke-width:32px"/><line style="fill:none;stroke:#333333;stroke-linecap:square;stroke-miterlimit:10;stroke-width:32px" x1="398.87" x2="96" y1="160" y2="160"/><polyline points="208 464 96 352 208 240" style="fill:none;stroke:#333333;stroke-linecap:square;stroke-miterlimit:10;stroke-width:32px"/><line style="fill:none;stroke:#333333;stroke-linecap:square;stroke-miterlimit:10;stroke-width:32px" x1="114" x2="416" y1="352" y2="352"/></svg>
+            </div>
+        </div>
+        <div class="side-currency">
+            <p>We get:</p>
+            <mat-form-field class="currency-form">
+                <mat-select id="right-currency-select" (selectionChange)="convertLeftCurrency()" [(ngModel)]="rightCurrency">
+                  <mat-option *ngFor="let currency of currencies" [value]="currency.key">{{currency.value}}, {{currency.key}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="currency-form">
+                <input matInput type="number" placeholder="0" min="0" [(ngModel)]="rightCurrencyValue" (ngModelChange)="convertLeftCurrency()">
+            </mat-form-field>
+            <div class="interbank-rate">
+                <p>Interbank Rate Preview</p>
+                <mat-form-field class="currency-form">
+                    <mat-select [(ngModel)]="rate" (ngModelChange)="convertRightCurrency()">
+                      <mat-option *ngFor="let rate of intepbankRate" [value]="rate.value">-/+ {{rate.desc}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
         </div>
     </div>
-    <div class="side-currency">
-        <p>We get:</p>
-        <select name="" id="right-currency-select" (change)="onOptionSelect()" [(ngModel)]="rightCurrency">
-            <ng-container *ngFor="let currency of getObjectEntries(currencies)">
-                <option value={{currency.key}}>{{currency.value}}, {{currency.key}}</option>
-            </ng-container>
-        </select>
-        <input type="number" placeholder="0" min="0" [(ngModel)]="rightCurrencyValue" (ngModelChange)="convertLeftCurrency()">
+    <div class="add-info">
+        <p></p>
+        <p>ANGULAR's currency calculator tools use ANGULAR Rates™, indicative exchange rates sourced from leading market data providers.</p>
     </div>
 </div>

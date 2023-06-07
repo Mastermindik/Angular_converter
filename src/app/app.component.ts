@@ -10,7 +10,7 @@ export class AppComponent implements OnInit{
   currenciesRates: any = {};
   constructor(private currenciesService: CurrenciesListService) { }
   ngOnInit(): void {
-    this.currenciesService.handleOptionSelected().subscribe(e => this.currenciesRates = e);
+    this.currenciesService.getRates().subscribe(e => this.currenciesRates = e);
   }
   
 }
