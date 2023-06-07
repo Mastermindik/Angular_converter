@@ -1,0 +1,27 @@
+.subtitle-wraper {
+    display: flex;
+    gap: 2rem;
+    // background: rgba(255, 255, 255, 0.2);
+    .subtitle-left {
+        h1 {
+            margin: 0.5rem 0 0;
+            font-size: 3rem;
+            color: #333333;
+        }
+        h2 {
+            margin-top: 0;
+            font-size: .7rem;
+            color: #eaeaea;
+        }
+    }
+    .subtitle-right {
+        flex: auto;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 1rem;
+        button {
+            padding: 1.5rem 3rem;
+        }
+    }
+}
