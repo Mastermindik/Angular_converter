@@ -3,7 +3,6 @@ import { ChartConfiguration, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { CurrenciesListService } from 'src/app/services/currenciesList.service';
 
-// import { default as Annotation } from 'chartjs-plugin-annotation';
 @Component({
   selector: 'app-statistic',
   templateUrl: './statistic.component.html',
@@ -21,6 +20,7 @@ export class StatisticComponent implements OnInit, DoCheck {
   constructor(private currenciesService: CurrenciesListService) {
     this.previos = this.currentCurrencies;
    }
+
   ngDoCheck(): void {
     if (this.currentCurrencies[0] !== this.previos[0] || this.currentCurrencies[1] !== this.previos[1]) {
       this.update();
@@ -94,10 +94,10 @@ export class StatisticComponent implements OnInit, DoCheck {
     
     return dates;
   }
-  update() {
+  update(): void {
     this.lineChartData.datasets[0].data = this.getRates(this.currentCurrencies, this.dataSet)
   }
-  updateExtrems():void {
+  updateExtrems(): void {
     const arr:number[] = this.getRates(this.currentCurrencies, this.dataSet);
     this.min = Math.min(...arr);
     this.max = Math.max(...arr);

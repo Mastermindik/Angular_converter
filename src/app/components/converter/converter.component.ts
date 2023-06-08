@@ -7,7 +7,7 @@ import { CurrenciesListService } from 'src/app/services/currenciesList.service';
   styleUrls: ['./converter.component.scss']
 })
 export class ConverterComponent implements OnInit {
-  currencies: Array<any> = [];
+  currencies: any[] = [];
   currenciesRates: any = {};
   leftCurrency: string = "USD";
   rightCurrency: string = "UAH";
@@ -30,31 +30,21 @@ export class ConverterComponent implements OnInit {
   ngOnInit(): void {
     this.currenciesService.getAllCurrencies().subscribe(c => this.currencies = c);
     this.currenciesService.getRates().subscribe(e => this.currenciesRates = e);
-    // console.log(this.currenciesService.getStatistic(["2023-06-06", "2023-06-05", "2023-06-04"]));
     this.optionChanged.emit([this.leftCurrency, this.rightCurrency]);
-    
   }
   @Output() optionChanged: EventEmitter<string[]> = new EventEmitter<string[]>();
-
-  getObjectEntries(obj: any): any[] {
-    return Object.entries(obj).map(([key, value]) => ({ key, value }));
-  }
   
-  onOptionSelect() {
-    this.convertRightCurrency();
-  }
-  
-  convertRightCurrency() {
+  convertRightCurrency():void {
     this.optionChanged.emit([this.leftCurrency, this.rightCurrency]);
     
     this.rightCurrencyValue = parseFloat(((this.leftCurrencyValue * this.currenciesRates.rates[this.rightCurrency] / this.currenciesRates.rates[this.leftCurrency]) + ((this.leftCurrencyValue * this.currenciesRates.rates[this.rightCurrency] / this.currenciesRates.rates[this.leftCurrency]) * this.rate)).toFixed(3));
   }
-  convertLeftCurrency() {
+  convertLeftCurrency():void {
     this.optionChanged.emit([this.leftCurrency, this.rightCurrency]);
     this.leftCurrencyValue = parseFloat(((this.rightCurrencyValue * this.currenciesRates.rates[this.leftCurrency] / this.currenciesRates.rates[this.rightCurrency] - (this.rightCurrencyValue * this.currenciesRates.rates[this.leftCurrency] / this.currenciesRates.rates[this.rightCurrency]) * this.rate)).toFixed(3));
   }
-  swapCurrencies() {
-    let bufer: any = this.leftCurrency;
+  swapCurrencies():void {
+    let bufer: string | number = this.leftCurrency;
     this.leftCurrency = this.rightCurrency;
     this.rightCurrency = bufer;
     bufer = this.leftCurrencyValue;
@@ -62,7 +52,7 @@ export class ConverterComponent implements OnInit {
     this.rightCurrencyValue = this.leftCurrencyValue;
     this.convertRightCurrency();
   }
-  changeDate() {
+  changeDate():void {
     if (this.currentDate === this.maxDate) {
       this.currenciesService.getRates().subscribe(e => this.currenciesRates = e);
     } else {
@@ -73,4 +63,3 @@ export class ConverterComponent implements OnInit {
     }
   }
 }
-//https://www.oanda.com/currency-converter/ru/?from=USD&to=UAH&amount=1 !!!!!!
