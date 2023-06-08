@@ -45,7 +45,7 @@ export class StatisticComponent implements OnInit, DoCheck {
     datasets: [
       {
         data: this.getRates(this.currentCurrencies, this.dataSet).length ? this.getRates(this.currentCurrencies, this.dataSet) : [36.95, 36.91, 36.93, 37.07, 37.07, 36.86, 36.95],
-        label: 'Series A',
+        label: `${this.currentCurrencies[0]}/${this.currentCurrencies[1]}`,
         backgroundColor: 'rgba(148,159,177,0.2)',
         borderColor: 'rgba(148,159,177,1)',
         pointBackgroundColor: 'rgba(148,159,177,1)',
